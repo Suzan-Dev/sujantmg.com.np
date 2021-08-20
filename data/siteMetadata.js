@@ -52,7 +52,7 @@ const siteMetadata = {
       // https://utteranc.es/
       repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
       issueTerm: 'pathname', // supported options: pathname, url, title
-      label: '', // label (optional): Comment 💬
+      label: 'comment', // label (optional): Comment 💬
       // theme example: github-light, github-dark, preferred-color-scheme
       // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
       theme: 'github-light',
