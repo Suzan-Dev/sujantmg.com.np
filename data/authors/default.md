@@ -2,14 +2,14 @@
 name: Sujan Tamang
 avatar: /static/images/avatar.jpg
 occupation: Software Developer
-company: LogPoint
+company: Not Working
 email: everestgaming3@gmail.com
 twitter: https://twitter.com/SujanTa88350485
 linkedin: https://www.linkedin.com/in/sujan-tamang-25b640198
 github: https://github.com/Suzan-Dev
 ---
 
-**Sujan Tamang** is a self-taught software developer with over 1+ year of experience currently working at LogPoint. He has a flair for creating elegant solutions and building better applications for the people.
+**Sujan Tamang** is a self-taught software developer with over 1+ year of experience currently **not working**. He has a flair for creating elegant solutions and building better applications for the people.
 
 Passionate about **software architecture**, **artificial intelligence** & **cybersecurity**. Javascript being his core technical skill, there's no limit for his interest of learning new technologies.
 
