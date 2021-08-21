@@ -59,19 +59,19 @@ Consider a shopping use case in which you put products into your basket and then
 If you take your JavaScript knowledge and code the use case without OOP, it would look like this:
 
 ```js
-const bread = { name: 'Bread', price: 1 };
-const water = { name: 'Water', price: 0.25 };
+const bread = { name: 'Bread', price: 1 }
+const water = { name: 'Water', price: 0.25 }
 
-const basket = [];
-basket.push(bread);
-basket.push(bread);
-basket.push(water);
-basket.push(water);
-basket.push(water);
+const basket = []
+basket.push(bread)
+basket.push(bread)
+basket.push(water)
+basket.push(water)
+basket.push(water)
 
-const total = basket.map((product) => product.price).reduce((a, b) => a + b, 0);
+const total = basket.map((product) => product.price).reduce((a, b) => a + b, 0)
 
-console.log('one has to pay in total: ' + total);
+console.log('one has to pay in total: ' + total)
 ```
 
 The OOP perspective makes writing better code easier because we think of objects as we would encounter them in the real world.
@@ -80,14 +80,14 @@ As our use case contains a basket of products, we already have two kinds of obje
 The OOP version of the shopping use case could be written like:
 
 ```js
-const bread = new Product('bread', 1);
-const water = new Product('water', 0.25);
+const bread = new Product('bread', 1)
+const water = new Product('water', 0.25)
 
-const basket = new Basket();
-basket.addProduct(2, bread);
-basket.addProduct(3, water);
+const basket = new Basket()
+basket.addProduct(2, bread)
+basket.addProduct(3, water)
 
-basket.printShoppingInfo();
+basket.printShoppingInfo()
 ```
 
 As you can see in the first line, we create a new object by using the keyword `new` followed by the name of what’s called a class (described below).
@@ -114,32 +114,32 @@ Of course, those objects need code which you have to provide in the classes. It 
 
 ```js
 function Product(_name, _price) {
-  const name = _name;
-  const price = _price;
+  const name = _name
+  const price = _price
 
   this.getName = function () {
-    return name;
-  };
+    return name
+  }
 
   this.getPrice = function () {
-    return price;
-  };
+    return price
+  }
 }
 
 function Basket() {
-  const products = [];
+  const products = []
 
   this.addProduct = function (amount, product) {
-    products.push(...Array(amount).fill(product));
-  };
+    products.push(...Array(amount).fill(product))
+  }
 
   this.calcTotal = function () {
-    return products.map((product) => product.getPrice()).reduce((a, b) => a + b, 0);
-  };
+    return products.map((product) => product.getPrice()).reduce((a, b) => a + b, 0)
+  }
 
   this.printShoppingInfo = function () {
-    console.log('one has to pay in total: ' + this.calcTotal());
-  };
+    console.log('one has to pay in total: ' + this.calcTotal())
+  }
 }
 ```
 
@@ -168,8 +168,8 @@ You may encounter another version of how to declare a class:
 
 ```js
 function Product(name, price) {
-  this.name = name;
-  this.price = price;
+  this.name = name
+  this.price = price
 }
 ```
 
@@ -179,8 +179,8 @@ it seems to be a better version because it doesn’t require the getter (getName
 Unfortunately, you have now given full access to the properties from the outside. So everybody could access and modify it:
 
 ```js
-const bread = new Product('bread', 1);
-bread.price = -10;
+const bread = new Product('bread', 1)
+bread.price = -10
 ```
 
 This is something you don’t want as it makes the application more difficult to maintain.
@@ -216,12 +216,12 @@ We say that Product is the superclass of Book and Book is a subclass of Product:
 
 ```js
 function Book(_name, _price, _author) {
-  Product.call(this, _name, _price);
-  const author = _author;
+  Product.call(this, _name, _price)
+  const author = _author
 
   this.getAuthor = function () {
-    return author;
-  };
+    return author
+  }
 }
 ```
 
@@ -232,8 +232,8 @@ Book must call that data from the Product class.
 You can now add a book object to the basket without any issues:
 
 ```js
-const faust = new Book('faust', 12.5, 'Goethe');
-basket.addProduct(1, faust);
+const faust = new Book('faust', 12.5, 'Goethe')
+basket.addProduct(1, faust)
 ```
 
 Basket expects an object of type Product. Since book inherits from Product through Book, it is also a Product.
@@ -315,33 +315,33 @@ basket.printShoppingInfo();
 // Prototype version
 
 function Product(name, price) {
-  this.name = name;
-  this.price = price;
+  this.name = name
+  this.price = price
 }
 
 function Book(name, price, author) {
-  Product.call(this, name, price);
-  this.author = author;
+  Product.call(this, name, price)
+  this.author = author
 }
 
-Book.prototype = Object.create(Product.prototype);
-Book.prototype.constructor = Book;
+Book.prototype = Object.create(Product.prototype)
+Book.prototype.constructor = Book
 
 function Basket() {
-  this.products = [];
+  this.products = []
 }
 
 Basket.prototype.addProduct = function (amount, product) {
-  this.products.push(...Array(amount).fill(product));
-};
+  this.products.push(...Array(amount).fill(product))
+}
 
 Basket.prototype.calcTotal = function () {
-  return this.products.map((product) => product.price).reduce((a, b) => a + b, 0);
-};
+  return this.products.map((product) => product.price).reduce((a, b) => a + b, 0)
+}
 
 Basket.prototype.printShoppingInfo = function () {
-  console.log('one has to pay in total: ' + this.calcTotal());
-};
+  console.log('one has to pay in total: ' + this.calcTotal())
+}
 ```
 
 > Lesson: OOP was added to JavaScript later in its development.

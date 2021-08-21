@@ -23,18 +23,18 @@ In this post you’ll learn how to use `React.useRef()` hook to create persisted
 A reference is an object having a special property `current`.
 
 ```jsx {4,8,11}
-import { useRef } from 'react';
+import { useRef } from 'react'
 
 function MyComponent() {
-  const reference = useRef(initialValue);
+  const reference = useRef(initialValue)
 
   const someHandler = () => {
     // Access reference value:
-    const value = reference.current;
+    const value = reference.current
 
     // Update reference value:
-    reference.current = newValue;
-  };
+    reference.current = newValue
+  }
 
   // ...
 }
@@ -54,19 +54,19 @@ Now, let’s see how to use `useRef()` in practice.
 The component `LogButtonClicks` uses a reference to store the number of clicks on a button:
 
 ```jsx {4,7}
-import { useRef } from 'react';
+import { useRef } from 'react'
 
 function LogButtonClicks() {
-  const countRef = useRef(0);
+  const countRef = useRef(0)
 
   const handle = () => {
-    countRef.current++;
-    console.log(`Clicked ${countRef.current} times`);
-  };
+    countRef.current++
+    console.log(`Clicked ${countRef.current} times`)
+  }
 
-  console.log('I rendered!');
+  console.log('I rendered!')
 
-  return <button onClick={handle}>Click me</button>;
+  return <button onClick={handle}>Click me</button>
 }
 ```
 
@@ -87,20 +87,20 @@ Now a reasonable question: what’s the main difference between references and s
 Let’s reuse the component `LogButtonClicks` from the previous section, but this time use `useState()` hook to count the number of button clicks:
 
 ```jsx {4,9}
-import { useState } from 'react';
+import { useState } from 'react'
 
 function LogButtonClicks() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   const handle = () => {
-    const updatedCount = count + 1;
-    console.log(`Clicked ${updatedCount} times`);
-    setCount(updatedCount);
-  };
+    const updatedCount = count + 1
+    console.log(`Clicked ${updatedCount} times`)
+    setCount(updatedCount)
+  }
 
-  console.log('I rendered!');
+  console.log('I rendered!')
 
-  return <button onClick={handle}>Click me</button>;
+  return <button onClick={handle}>Click me</button>
 }
 ```
 
@@ -125,27 +125,27 @@ The component `Stopwatch` uses `setInterval(callback, time)` timer function to i
 The timer id is stored into a reference `timerIdRef`:
 
 ```jsx {4,11}
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react'
 
 function Stopwatch() {
-  const timerIdRef = useRef(0);
-  const [count, setCount] = useState(0);
+  const timerIdRef = useRef(0)
+  const [count, setCount] = useState(0)
 
   const startHandler = () => {
     if (timerIdRef.current) {
-      return;
+      return
     }
-    timerIdRef.current = setInterval(() => setCount((c) => c + 1), 1000);
-  };
+    timerIdRef.current = setInterval(() => setCount((c) => c + 1), 1000)
+  }
 
   const stopHandler = () => {
-    clearInterval(timerIdRef.current);
-    timerIdRef.current = 0;
-  };
+    clearInterval(timerIdRef.current)
+    timerIdRef.current = 0
+  }
 
   useEffect(() => {
-    return () => clearInterval(timerIdRef.current);
-  }, []);
+    return () => clearInterval(timerIdRef.current)
+  }, [])
 
   return (
     <div>
@@ -155,7 +155,7 @@ function Stopwatch() {
         <button onClick={stopHandler}>Stop</button>
       </div>
     </div>
-  );
+  )
 }
 ```
 
@@ -182,17 +182,17 @@ Another useful application of the `useRef()` hook is to access DOM elements. Thi
 3. After mounting, `elementRef.current` points to the DOM element.
 
 ```jsx {4,7,11}
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react'
 
 function AccessingElement() {
-  const elementRef = useRef();
+  const elementRef = useRef()
 
   useEffect(() => {
-    const divElement = elementRef.current;
-    console.log(divElement); // logs <div>I'm an element</div>
-  }, []);
+    const divElement = elementRef.current
+    console.log(divElement) // logs <div>I'm an element</div>
+  }, [])
 
-  return <div ref={elementRef}>I'm an element</div>;
+  return <div ref={elementRef}>I'm an element</div>
 }
 ```
 
@@ -208,16 +208,16 @@ and after mounting call the special method `element.focus()` on the element.
 Here’s a possible implementation of the `<InputFocus>` component:
 
 ```jsx {4,7,10}
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react'
 
 function InputFocus() {
-  const inputRef = useRef();
+  const inputRef = useRef()
 
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    inputRef.current.focus()
+  }, [])
 
-  return <input ref={inputRef} type="text" />;
+  return <input ref={inputRef} type="text" />
 }
 ```
 
@@ -234,22 +234,22 @@ React then, after mounting, sets `inputRef.current` to be the input element. Now
 During initial rendering, the reference supposed to hold the DOM element is empty:
 
 ```jsx {8,14}
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react'
 
 function InputFocus() {
-  const inputRef = useRef();
+  const inputRef = useRef()
 
   useEffect(() => {
     // Logs `HTMLInputElement`
-    console.log(inputRef.current);
+    console.log(inputRef.current)
 
-    inputRef.current.focus();
-  }, []);
+    inputRef.current.focus()
+  }, [])
 
   // Logs `undefined` during initial rendering
-  console.log(inputRef.current);
+  console.log(inputRef.current)
 
-  return <input ref={inputRef} type="text" />;
+  return <input ref={inputRef} type="text" />
 }
 ```
 
@@ -271,30 +271,30 @@ That’s why updating a reference (as well as updating state) shouldn’t be per
 The reference must be updated either inside a `useEffect()` callback or inside handlers (event handlers, timer handlers, etc).
 
 ```jsx {7,10,15,18,21}
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react'
 
 function MyComponent({ prop }) {
-  const myRef = useRef(0);
+  const myRef = useRef(0)
 
   useEffect(() => {
-    myRef.current++; // Good!
+    myRef.current++ // Good!
 
     setTimeout(() => {
-      myRef.current++; // Good!
-    }, 1000);
-  }, []);
+      myRef.current++ // Good!
+    }, 1000)
+  }, [])
 
   const handler = () => {
-    myRef.current++; // Good!
-  };
-
-  myRef.current++; // Bad!
-
-  if (prop) {
-    myRef.current++; // Bad!
+    myRef.current++ // Good!
   }
 
-  return <button onClick={handler}>My button</button>;
+  myRef.current++ // Bad!
+
+  if (prop) {
+    myRef.current++ // Bad!
+  }
+
+  return <button onClick={handler}>My button</button>
 }
 ```
 
