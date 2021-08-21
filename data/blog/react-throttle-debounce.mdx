@@ -1,7 +1,7 @@
 ---
 title: How to Correctly Debounce and Throttle Callbacks in React
-date: '2021-08-20'
-tags: ['React', 'Callback']
+date: '2021-08-07'
+tags: ['React', 'Callbacks']
 draft: false
 summary: In this post, you’ll learn how to correctly use React hooks to apply debouncing and throttling techniques to callbacks in React.
 images: []
@@ -30,22 +30,22 @@ Let’s say that a component `<FilterList>` accepts a big list of names (at leas
 Here’s the first version of `<FilterList>` component:
 
 ```jsx
-import { useState } from 'react'
+import { useState } from 'react';
 
 export function FilterList({ names }) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
 
-  let filteredNames = names
+  let filteredNames = names;
 
   if (query !== '') {
     filteredNames = names.filter((name) => {
-      return name.toLowerCase().includes(query.toLowerCase())
-    })
+      return name.toLowerCase().includes(query.toLowerCase());
+    });
   }
 
   const changeHandler = (event) => {
-    setQuery(event.target.value)
-  }
+    setQuery(event.target.value);
+  };
 
   return (
     <div>
@@ -54,11 +54,11 @@ export function FilterList({ names }) {
         <div key={name}>{name}</div>
       ))}
     </div>
-  )
+  );
 }
 ```
 
-[Try the demo](https://codesandbox.io/s/no-debouncing-bbd0e?file=/src/FilterList.js)
+[Try the demo](https://codesandbox.io/s/no-debouncing-forked-xkovk?file=/src/index.js)
 
 When typing the query into the input field, you can notice that the list gets filtered for every introduced character.
 
@@ -73,9 +73,9 @@ To debounce the `changeHandler` function I’m going to use the `lodash.debounce
 First, let’s look at how to use the [debounce()](https://lodash.com/docs/4.17.15#debounce) function:
 
 ```jsx
-import debounce from 'lodash.debounce'
+import debounce from 'lodash.debounce';
 
-const debouncedCallback = debounce(callback, waitTime)
+const debouncedCallback = debounce(callback, waitTime);
 ```
 
 `debounce()` function accepts the `callback` argument function, and returns a debounced version of that function.
@@ -89,25 +89,25 @@ The only problem with applying debouncing to `changeHandler` inside a React comp
 The first approach would be to use the `useCallback(callback, dependencies)` that would keep one instance of the debounced function between component re-renderings.
 
 ```jsx {2,19,23}
-import { useState, useCallback } from 'react'
-import debounce from 'lodash.debounce'
+import { useState, useCallback } from 'react';
+import debounce from 'lodash.debounce';
 
 export function FilterList({ names }) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
 
-  let filteredNames = names
+  let filteredNames = names;
 
   if (query !== '') {
     filteredNames = names.filter((name) => {
-      return name.toLowerCase().includes(query.toLowerCase())
-    })
+      return name.toLowerCase().includes(query.toLowerCase());
+    });
   }
 
   const changeHandler = (event) => {
-    setQuery(event.target.value)
-  }
+    setQuery(event.target.value);
+  };
 
-  const debouncedChangeHandler = useCallback(debounce(changeHandler, 300), [])
+  const debouncedChangeHandler = useCallback(debounce(changeHandler, 300), []);
 
   return (
     <div>
@@ -116,17 +116,17 @@ export function FilterList({ names }) {
         <div key={name}>{name}</div>
       ))}
     </div>
-  )
+  );
 }
 ```
 
-[Try the demo](https://codesandbox.io/s/use-callback-debouncing-0ch2q?file=/src/FilterList.js)
+[Try the demo](https://codesandbox.io/s/use-callback-debouncing-forked-01oz8?file=/src/index.js)
 
 `debounce(changeHandler, 300)` creates a debounced version of the event handled, and `useCallback(debounce(changeHandler, 300), [])` makes sure to return the same instance of the debounced callback between re-renderings.
 
 Note: the approach also works with creating throttled functions, e.g. `useCallback(throttle(callback, time), [])`.
 
-Open the [demo](https://codesandbox.io/s/use-callback-debouncing-0ch2q?file=/src/FilterList.js) and type a query: you’ll see that the list is filtered with a delay of `300ms` after the last typing: which brings a softer and better user experience.
+Open the [demo](https://codesandbox.io/s/use-callback-debouncing-forked-01oz8?file=/src/index.js) and type a query: you’ll see that the list is filtered with a delay of `300ms` after the last typing: which brings a softer and better user experience.
 
 However… this implementation has a small performance issue: each time the component re-renders, a new instance of the debounced function is created by the `debounce(changeHandler, 300)`.
 
@@ -139,25 +139,25 @@ Let’s see how to avoid creating debounced functions on each render in the next
 Fortunately, using `useMemo()` hook as an alternative to `useCallback()` is a more optimal choice:
 
 ```jsx {19}
-import { useState, useMemo } from 'react'
-import debounce from 'lodash.debounce'
+import { useState, useMemo } from 'react';
+import debounce from 'lodash.debounce';
 
 export function FilterList({ names }) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
 
-  let filteredNames = names
+  let filteredNames = names;
 
   if (query !== '') {
     filteredNames = names.filter((name) => {
-      return name.toLowerCase().includes(query.toLowerCase())
-    })
+      return name.toLowerCase().includes(query.toLowerCase());
+    });
   }
 
   const changeHandler = (event) => {
-    setQuery(event.target.value)
-  }
+    setQuery(event.target.value);
+  };
 
-  const debouncedChangeHandler = useMemo(() => debounce(changeHandler, 300), [])
+  const debouncedChangeHandler = useMemo(() => debounce(changeHandler, 300), []);
 
   return (
     <div>
@@ -166,34 +166,34 @@ export function FilterList({ names }) {
         <div key={name}>{name}</div>
       ))}
     </div>
-  )
+  );
 }
 ```
 
-[Try the demo](https://codesandbox.io/s/use-memo-debouncing-jwsog?file=/src/FilterList.js)
+[Try the demo](https://codesandbox.io/s/use-memo-debouncing-forked-2p9ou?file=/src/index.js)
 
 `useMemo(() => debounce(changeHandler, 300), [])` memoizes the debounced handler, but also calls `debounce()` only during initial rendering of the component.
 
 This approach also works with creating throttled functions: `useMemo(() => throttle(callback, time), [])`.
 
-If you open the [demo](https://codesandbox.io/s/use-memo-debouncing-jwsog?file=/src/FilterList.js), you’d see that typing into the input field is still debounced.
+If you open the [demo](https://codesandbox.io/s/use-memo-debouncing-forked-2p9ou?file=/src/index.js), you’d see that typing into the input field is still debounced.
 
 ## Be careful with dependencies
 
 If the debounced handler uses props or state, to avoid creating stale closures, I recommend setting up correctly the dependencies of `useMemo()`:
 
 ```jsx {8, 11}
-import { useMemo } from 'react'
-import debounce from 'lodash.debounce'
+import { useMemo } from 'react';
+import debounce from 'lodash.debounce';
 
 function MyComponent({ prop }) {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
 
   const eventHandler = () => {
     // the event uses `prop` and `value`
-  }
+  };
 
-  const debouncedEventHandler = useMemo(() => debounce(eventHandler, 300), [prop, stateValue])
+  const debouncedEventHandler = useMemo(() => debounce(eventHandler, 300), [prop, stateValue]);
 
   // ...
 }
@@ -241,18 +241,18 @@ export function FilterList({ names }) {
 A good way to create debounced and throttled functions, to handle often happening events, is by using the `useMemo()` hook:
 
 ```jsx {10,12}
-import { useMemo } from 'react'
-import debounce from 'lodash.debounce'
-import throttle from 'lodash.throttle'
+import { useMemo } from 'react';
+import debounce from 'lodash.debounce';
+import throttle from 'lodash.throttle';
 
 function MyComponent() {
   const eventHandler = () => {
     // handle the event...
-  }
+  };
 
-  const debouncedEventHandler = useMemo(() => debounce(eventHandler, 300), [])
+  const debouncedEventHandler = useMemo(() => debounce(eventHandler, 300), []);
 
-  const throttledEventHandler = useMemo(() => throttle(eventHandler, 300), [])
+  const throttledEventHandler = useMemo(() => throttle(eventHandler, 300), []);
 
   // ...
 }
