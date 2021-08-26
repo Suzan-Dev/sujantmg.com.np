@@ -4,7 +4,7 @@ const siteMetadata = {
   headerTitle: 'Sujan Tamang',
   description: 'A blog powered by Next.js and Tailwind.css',
   language: 'en-us',
-  siteUrl: 'https://sujantmg-com-np.vercel.app',
+  siteUrl: 'https://sujantmg.com.np',
   siteRepo: 'https://github.com/Suzan-Dev/sujantmg.com.np',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
