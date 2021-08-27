@@ -16,7 +16,8 @@ authors: ['default']
 ## Overview
 
 This article is for people who has worked with JavaScript before and also for those people who wants to learn basic Python.
-I have split up the article so, this is **Part 1** of the article. If you want to learn more, please read **Part 2** article when it's out (usually after a week).
+I have split up the contents so, this is **Part 1** of the article. If you want to learn more, please read **Part 2** of this article when it's out
+(usually after a week).
 
 For this Part 1 article, I'll be covering fundamental **data types**, **built-in functions and methods**, **variables**, **type conversion** and much more.
 
@@ -30,19 +31,19 @@ If you got that, then it's awesome. But if you are still confused with the defin
 
 > A prgramming language is like a translator which converts your programs that you understand to something that machine understands.
 
-I hope you got that one. It's just a refresh before learning a new programming language. Let's not waste any more time and learn what is Python why to learn it.
+I hope you got that one. It's just a refresh before learning a new programming language. Let's not waste any more time and learn what is Python & why to learn it.
 
 ## What is Python programming?
 
-Python is a **interpreted high-level** programming language used for general-purpose software engineering.
+Python is an **interpreted high-level** programming language used for general-purpose software engineering.
 Initially developed in the late **1980’s** by [Guido Van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum), Python has been around for decades alongside other languages like Java and C.
 Van Rossum modeled Python after the English language, eliminating unnecessary syntax to make it easier to read and write than other programming languages.
 
-Python is an _open source_ language, and in recent years has increased in popularity due to its use in **data science**.
+It is also _open source_, and in recent years has increased in popularity due to its use in **data science**.
 Python also has a strong community around **machine learning**, **data modeling**, **data analysis** and **artificial intelligence (AI)**,
 with extensive resources and libraries built for these purposes.
 
-And yes, the rumors are true. Python is named after the British comedy group [Monty Python](https://en.wikipedia.org/wiki/Monty_Python) which in our opinion makes it all the more awesome.
+And yes, the rumors are true. Python is named after the British comedy group [Monty Python](https://en.wikipedia.org/wiki/Monty_Python) which makes it more awesome.
 
 ## So why learn Python?
 
@@ -52,7 +53,7 @@ And yes, the rumors are true. Python is named after the British comedy group [Mo
 4. Python is in high demand for jobs.
 5. Python has an incredibly supportive community.
 
-Basically, I wanted to learn Python to be a part of its community and use it for **machine learning** and **backend server**. But you shall have your own reasons.
+Basically, I wanted to learn Python to be a part of its community and use it for **machine learning** and **building backend servers**. But you shall have your own reasons.
 There are much more to why learn Python. You can learn more by researching on your own.
 
 ## A Quick Note before learning Python
@@ -60,7 +61,7 @@ There are much more to why learn Python. You can learn more by researching on yo
 If you want to code along and already have your **development environment** setup for Python then it's good. Otherwise, We need to install Python on our machine and
 setup our development environment which is **out of scope** of this article.
 
-By the way, I'll be using an [online IDE](https://replit.com/) so that I can easily write code without any setup.
+By the way, I'll be using an [online IDE](https://replit.com/) so that I can easily write code without any setup. You can also do the same.
 But If you want to write code on your local environment, it's not too difficult to install and there are many articles and videos out there which might help you.
 
 Three things you need to know is that:
@@ -77,21 +78,22 @@ Now, what the heck is **CPython**?
 If you are confused by this, don't worry. You can skip this and still write code.
 
 I introduced this earlier for you to know what you installed or going to install.
-And if you have guessed something, yes you're right. There are other implementation of Python like
+And if you have guessed something, then **YES** you're right. There are other implementation of Python like
 [Jython](https://www.jython.org/), [IronPython](https://ironpython.net/) etc.
 
 Finally, from the next topic we are going to learn some Python and do some coding. I hope you're still here so, Let's get started.
 
 ## Some Common Data Types
 
-Every programming languages have some common data types like numbers, strings & booleans etc. They are as follows:
+Every programming languages have some common data types like numbers, strings & booleans etc. It allows us to design a data structure for our needs.
+Let's learn about them.
 
 ### Number
 
-Actually, Python don't have a data type called number like in JavaScript. Instead, there are three distinct types of number: _integers_ (**int**),
+Actually, Python don't have a data type called number like in JavaScript. Instead, there are three distinct type of numbers: _integers_ (**int**),
 _floating point numbers_ (**float**) and _complex numbers_ (**complex**). Integers are **whole numbers** and Floats are **numbers containing decimals**.
 
-We won't cover complex numbers in this article. Let's look at some examples.
+We won't be covering about complex numbers in this article. Now, let's look at some examples.
 
 ```py
 # Int
@@ -107,7 +109,7 @@ print(3.5 + 4)
 print(2 / 4) # produces a float
 ```
 
-If you've done some basic maths in school. You could know what we're doing. But I would cover the three operators that are used.
+If you've done some basic maths in school. You could know what we're doing. But I would cover the three operators that are used above.
 
 1. `**` is used to calculate power of the number.
 2. `//` is used to get the quotient of the division.
@@ -143,7 +145,7 @@ You can also add strings in Python. This is called **string concatenation**.
 print('Hello' + ' ' + 'Sir')
 ```
 
-**String Concatenation** is great but can be tedious to work with.
+**String Concatenation** is great but can be _tedious_ to work with.
 If you're a JavaScipt developer then you should have used [Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 and there is something similar to Python called **Formatted string literals**. This helps us to easily work with dynamic values in strings.
 
@@ -153,6 +155,9 @@ user_age = 32
 
 print(f'Hello {user_name}, You are {user_age} years old.')
 ```
+
+In the above code, I have used something called **variables** to store the values `'John'` and `32`.
+I'll be covering about it so, don't worry.
 
 If you want to use single or double quotes mutiple times in a sentence, then you need to escape it using **escape character** `\`.
 `\t` and `\n` are also used in below examples which are **tab space** and **new line** respectively.
@@ -166,20 +171,20 @@ There are much more to string manipulation in Python. But I think this much enou
 
 ### Boolean
 
-If you're a JavaScipt developer then you must know that, In Python boolean's are capitalized.
+If you're a JavaScipt developer then you must know that, boolean's are capitalized in Python.
 
 ```py
 print(True)
 print(False)
 
-print(2 > 4)
-print(7 <= 10)
-print(20 == 20)
+print(2 > 4) # False
+print(7 <= 10) # True
+print(20 == 20) # True
 ```
 
 ## Variables
 
-**Variables** is a concept that exists on all programming languages. so what does it mean?
+**Variable** is a concept that exists on all programming languages. so what does it mean?
 
 > Variable is a mermory location in a computer program where you can store your data.
 
@@ -194,7 +199,7 @@ Let's see some **Best Practices** while creating a variable.
 2. Start with lowercase/underscore while naming variable.
 3. Variable name can contain letters, numbers and underscores.
 4. Python is case-sensitive, so diffenrent variables are created if casing is different.
-5. Don't overwrite Python keywords like print, int etc. which you'll learn later.
+5. Don't overwrite Python keywords like **print**, **int** etc. which you'll learn later.
 
 You can also **rapidly assign** values to the variables.
 
@@ -237,11 +242,11 @@ print(type(int(str(100))))
 
 ### None
 
-The **None** keyword is used to define a **null value**, or **no value** at all. In JavaScipt, it is similar to **null** keyword which means _empty_.
+The **None** keyword is used to define a **null value**, or **no value** at all. In JavaScipt, it is similar to **null** keyword which simply means _empty_.
 
 ### List
 
-It is the **first** _data structure_ that we're going to learn.
+It is the **first** _data structure_ out of **fourth** that we're going to learn.
 
 > Data structures are containers that organize and group data according to type.
 
@@ -292,7 +297,7 @@ print(a,b,c, others,d) # 1 2 3 [4, 5, 6, 7, 8] 9
 ```
 
 There are also something called **built-in methods** which are similar to **built-in functions** but they can't be accessed globally.
-so, we need to call it using `.` on the list. Let's see an example.
+so, we need to call it using `.` on something. Let's see an example.
 
 ```py
 my_list = ['a','b']
