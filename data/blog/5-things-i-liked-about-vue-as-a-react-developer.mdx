@@ -1,0 +1,115 @@
+---
+title: 5 Things I Liked About Vue.js as a React Developer
+date: '2021-08-31'
+tags: ['Vue.js']
+draft: false
+summary: In this post, you’ll learn the five great things of Vue.js framework than React UI library from the viewpoint of React Developer.
+images: ['/static/images/blogs/5.5-things-i-liked-about-vue-as-a-react-developer/image1.jpg']
+layout: PostLayout
+authors: ['default']
+---
+
+![Learn Vue.js Strengths](/static/images/blogs/5.5-things-i-liked-about-vue-as-a-react-developer/image1.jpg)
+
+<TOCInline toc={props.toc} toHeading={2} />
+
+## Overview
+
+When I first started learning Javascript, I only know and care about it.
+But after some months of learning and getting the grasp of Javascript, I came across **libraries** and **frameworks**.
+I didn't know what to choose as learning all at the same time was not possible.
+But I was for sure going to learn one of these **three**: [React](https://reactjs.org/), [Vue](https://vuejs.org/) or [Angular](https://angular.io/).
+
+After researching for few days, I choosed to be a **React Developer**.
+It was _hard time_ learning it for the first time. Many people said that **Vue.js** is easy to learn.
+I didn't listen to people at that time as the **jobs** for React was popping everywhere.
+
+As expected, I got my **internship** as a React Developer after **a month** of learning React.
+Now, After having some good knowledge of React, I wanted to learn a **framework** and choosed to learn **Vue.js** instead of **Angular** for now.
+In the future, I might also learn about Angular or other **evolving libraries/frameworks** and will definitely make an article.
+
+And Also, I am tired of the **tech-wars**. I am tired of articles that claim a certain framework would be the best choice.
+The articles become most annoying when they make a **silly comparison**. Angular vs. React. React vs. Vue — and so on.
+I don’t think there will ever be a **clear winner**. The reason is that all the technologies have **different strengths** — and
+the best way to end the tech-wars might be to point out these **strengths**.
+
+Therefore, here are the things what I like about _Vue.js_ — as a **hopefully open-minded** _React.js_ developer. Have fun!
+
+## Getting started is easy
+
+React.js, Angular, and many more frameworks and libraries depend on a **CLI** to get you started.
+Angular even get you set up with **TypeScript** _out of the box_.
+
+Of course, you could write React.js without a **bundler**. But if you choose to do so, you would have to **waive JSX**.
+And honestly, writing React without JSX is **cumbersome**. Vue **shines** when it comes to such scenarios.
+
+The library can be included with a **CDN** or **downloading the file** on your own — then, import it in your HTML, and
+you can start to write Vue.js — _without a CLI and a bundler._
+
+Of course, using Vue like this means getting **rid** of useful _out-of-the-box features_ like **linting**, **TypeScript**, **minimizing**, and more — nevertheless,
+I saw people using Vue.js like this. Mainly when integrating the library into an existing project, like a plain JS and HTML app.
+
+Another use case that came to my mind was integrating a front-end library in a site that uses _backend templating_.
+
+## It probably has the flattest learning curve
+
+One of the _arguments_ against **Angular vs. React.js conflict** is the following: _Angular is much harder to learn, React.js is easier to learn._
+
+Since I’m a React.js developer and **barely** know anything about Angular, I don’t want to **judge** it so per se.
+What I can judge, however, is the following: _Vue.js has a lower entry-level than the other two._
+
+It’s no coincidence that Vue is often called the **best of both worlds**. While Angular feels much **stricter**,
+the **freedom and structure** of React.js can be overwhelming and lead to implementing everything else but _best practices_.
+Vue feels like a _combination_ of **both philosophies**.
+
+Every Vue component consists out of three parts:
+
+- A _markup section_, where you can write HTML with Vue’s special template syntax.
+- A _section for JavaScript code_, where we define our component under the hood. This includes functions, data, props, and so on.
+- A _section for styles_, which can be scoped to one component only.
+
+In my opinion, this is a _clean_ and _easy_ structure for building components.
+
+## Bundle size
+
+I created a **simple app**, _both_ in Angular but as well in React.js. Then I compared the **production bundle sizes**.
+
+The React.js was **135 kb** in size, the same Angular app **145 kb** — only a difference of **10 kb**. So, but what about Vue?
+
+Again, I build the same counter app. Then, I bundled it for production, and it turned out that the Vue app is **93 kb** in size. That’s quite a difference!
+
+Now, let’s come to the next point regarding performance.
+
+## Performance
+
+Actually, I am not a **huge fan** of _comparing_ the **performance of frameworks and libraries**.
+Why? Because often, the metrics are quite **worthless** for normal apps.
+Nevertheless, I find it interesting to bring in this perspective (and because I know how many people will comment that _Vue’s great performance is missing_).
+
+So, there you go. [Here](https://krausest.github.io/js-framework-benchmark/current.html) are the results. Please select Vue, Angular, React, and Preact.
+I choose to include **Preact** because it is _React’s faster alternative and often a better alternative to plain React_.
+
+Actually, the results **surprised** me. I knew that Vue had a better performance than React and Angular — but
+I didn’t expect the difference to be more than slightly. Also, the fact that **Vue outperforms Preact surprised me**.
+
+While Vue **doesn’t dominate** in every benchmark, the **overall performance** is better. We can see this in the last row, called the _geometric mean_.
+
+Nevertheless, you can see under which _circumstances_ the differences actually manifest.
+Updating _1m rows_ or _creating 10,000 rows_ isn’t a **typical scenario** in a web app.
+
+## Great tooling out of the box
+
+This is a point that already surprised me about Angular. Angular comes with an **awesome CLI** that supports you for everything you want to do.
+
+Since I mainly work with React, which doesn’t have such a **rich CLI**, I felt really _blessed_ about the **Vue CLI** — it reminds me of the one driving Angular.
+
+With Vue’s official CLI we can do everything:
+
+- Adding tools like _eslint_, _vuex_, or even _apollo_.
+- We can add _third-party components_ from NPM.
+- We can run a UI **version of the CLI**, which gives us also access to a beautiful webpack analyzer.
+- Upgrade projects to a new Vue version.
+- Apart from the CLI, there is a larger environment to which we get access. We can easily work with and **configure webpack**,
+  build web components and do much more. The Vue CLI can even run single components used for _prototyping_.
+
+Thank you for reading!
