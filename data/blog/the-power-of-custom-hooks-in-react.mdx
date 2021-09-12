@@ -29,7 +29,7 @@ This is so that the React linting tools know this function is a hook,
 and it also makes it easier to understand which functions are hooks and which are not.
 Other than that a custom hook will work just like any other function.
 In order to explain this process further we are going to create a custom hook called `useLocalStorage`
-which will act just like `useState` but it will sync the state with the browsers `localStorage`.
+which will act just like `useState` but it will sync the state with the browsers **localStorage**.
 
 ## useLocalStorage Hook
 
@@ -42,7 +42,7 @@ export default function useLocalStorage() {}
 ```
 
 Before working on the implementation of this function I first want to figure out exactly how this function will be used.
-Normally when dealing with `localStorage` the code will look something like this.
+Normally when dealing with **localStorage** the code will look something like this.
 
 ```jsx
 const key = 'key'
@@ -57,13 +57,13 @@ useEffect(() => {
 }, [value])
 ```
 
-There is a `useState` at the beginning which will query `localStorage` to get the value if it already exists,
-but if not then the `initialValue` will be set for the state.
-Then `useEffect` is used to update `localStorage` every time the value is updated.
+There is a `useState` at the beginning which will query **localStorage** to get the value if it already exists,
+but if not then the **initialValue** will be set for the state.
+Then `useEffect` is used to update **localStorage** every time the value is updated.
 
-The reason the function version of `useState` is used is because it will check the `localStorage` first before setting the state to the `initialValue`.
-If `useEffect` was used to check `localStorage` instead like below it would cause the component to render twice.
-Once when the `initialValue` was set and once after the `useEffect`.
+The reason the function version of `useState` is used is because it will check the **localStorage** first before setting the state to the **initialValue**.
+If `useEffect` was used to check **localStorage** instead like below it would cause the component to render twice.
+Once when the **initialValue** was set and once after the `useEffect`.
 
 ```jsx
 const key = 'key'
@@ -80,21 +80,21 @@ useEffect(() => {
 ```
 
 Based on the use case above we know that the `useLocalStorage` hook will need a `key` to store the state
-as well as an `initialValue` to set the state to if there is nothing in `localStorage`.
+as well as an **initialValue** to set the state to if there is nothing in **localStorage**.
 We can thus update our code to look like this.
 
 ```jsx
 export default function useLocalStorage(key, initialValue) {}
 ```
 
-Then in the component where `localStorage` is being used the code can be simplified to just one simple line
+Then in the component where **localStorage** is being used the code can be simplified to just one simple line
 which has the same return values as `useState` since the `useLocalStorage` hook will behave exactly like `useState`.
 
 ```jsx
 const [value, setValue] = useLocalStorage('key', initialValue)
 ```
 
-Now all that is left to do is move over the logic for how to handle `localState` into the `useLocalStorage` hook and return `value` and `setValue`.
+Now all that is left to do is move over the logic for how to handle `localState` into the `useLocalStorage` hook and return **value** and **setValue**.
 
 ```jsx {10,12}
 export default function useLocalStorage(key, initialValue) {
@@ -112,10 +112,10 @@ export default function useLocalStorage(key, initialValue) {
 }
 ```
 
-As you can see the majority of this code is the same as the previous `localStorage` code,
+As you can see the majority of this code is the same as the previous **localStorage** code,
 but there are two main differences. The first is that the key is no longer a `const` since it is a parameter to the `useLocalStorage` hook
 so that needs to be set as a dependency for `useEffect`.
-Second, the `value` and `setValue` variables are being returned from the hook in the exact same format as `useState`
+Second, the **value** and **setValue** variables are being returned from the hook in the exact same format as `useState`
 so this hook can be used in the exact same way as `useState`.
 
 ## useEffectSkipFirstRender Hook
