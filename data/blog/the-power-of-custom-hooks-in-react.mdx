@@ -21,6 +21,8 @@ We have all been there where we have our fetch logic duplicated across many diff
 This is where custom hooks come in. They are amazing at grouping up common logic like fetching from APIs
 and they make it incredibly easy to use that logic anywhere in the application with no duplication.
 
+> If you just want a collection of essential hooks. Check out this library called [react-use](https://github.com/streamich/react-use).
+
 ## How To Make A Custom Hook?
 
 Getting started with a custom hook is luckily incredibly easy, because they are just functions.
@@ -118,15 +120,16 @@ so that needs to be set as a dependency for `useEffect`.
 Second, the **value** and **setValue** variables are being returned from the hook in the exact same format as `useState`
 so this hook can be used in the exact same way as `useState`.
 
-## useEffectSkipFirstRender Hook
+## useUpdateEffect Hook
 
 I use this hook all of the time when needed as React don't have a built-in hook to skip initial render.
 
 ```jsx
 import React from 'react'
 
-export default function useEffectSkipFirstRender(cbFunction, dependencyArray) {
+export default function useUpdateEffect(cbFunction, dependencyArray) {
   const didMount = React.useRef(false)
+
   React.useEffect(() => {
     if (didMount.current) {
       cbFunction()
@@ -138,6 +141,8 @@ export default function useEffectSkipFirstRender(cbFunction, dependencyArray) {
 [Try the demo](https://stackblitz.com/edit/react-xm82vm)
 
 ## Conclusion
+
+You can find **both hooks** I covered & much more in this library called [react-use](https://github.com/streamich/react-use).
 
 That is all there is to creating custom hooks in React.
 They are no more than just fancy functions that can use React hooks inside of them,
