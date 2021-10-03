@@ -1,0 +1,206 @@
+---
+title: Efficient Redux development with Redux Toolkit
+date: '2021-10-02'
+tags: ['React', 'Redux Toolkit']
+draft: false
+summary: This article covers about Redux Toolkit which is the official, opinionated, batteries-included toolset for efficient Redux development.
+images: ['/static/images/blogs/9.efficient-redux-development-with-redux-toolkit/image1.jpg']
+layout: PostLayout
+authors: ['default']
+---
+
+![Redux Toolkit Logo](/static/images/blogs/9.efficient-redux-development-with-redux-toolkit/image1.jpg)
+
+<TOCInline toc={props.toc} toHeading={2} />
+
+## Overview
+
+In this article, we'll be covering about **Redux Toolkit (RTK)** which will help to us to write **Redux** code a lot _faster_ and _simpler_.
+If you loved Redux at first but hated it later after knowning how much boilerplate it required, then _RTK_ is for you.
+The concept are same but now most of the work will be handled by _RTK_.
+
+I _assume_ that you're familiar with Redux and it's concepts. I won't be covering about Redux in this article.
+Visit [Redux Website](https://Redux.js.org/) to learn about it. Now let's start learning about _RTK_.
+
+## Why use RTK?
+
+Here are some reasons why you should start using _RTK_ now.
+
+### Simple
+
+_RTK_ does most of the things internally. so, it's very simple to use and you can get started within a few minutes.
+It simplifies the store setup, creates _actions_ and _reducers_ automatically for us,
+handles **immutability** internally using [Immer](https://immerjs.github.io/immer/) library and much more.
+
+### Powerful
+
+As I already introducted how _RTK_ simplifies the immutability logic internally using [Immer](https://immerjs.github.io/immer/) library.
+It means you could write mutable code now and RTK takes care of immutability for you.
+
+### Productive
+
+The most painful point of Redux used to be the boilerplate it needed to do simple stuff.
+But now you can do more work with less code and focus on the core logic of your app needs.
+
+### Opinionated
+
+As you know, to get started in Redux, you need to install atleast 3-4 packages along it.
+_RTK_ provides good defaults out of the box and includes the most commonly used Redux addons built-in.
+so, it's very opinionated.
+
+## What's Included?
+
+Redux Toolkit includes following libraries by default.
+
+- [Redux](https://redux.js.org/) : A Predictable State Container for JS Apps
+- [Immer](https://immerjs.github.io/immer/) : A tiny package that allows you to work with immutable state in a more convenient way.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) : A middleware for writing asynchronous logic with Redux.
+- [Reselect](https://github.com/reduxjs/reselect) : A simple selector library for Redux.
+
+## Usage Summary
+
+This will be a short usage summary of RTK and I'll show you how easy it is to get started.
+We'll be creating a counter app and to make it simple, I'll be using **React** with **JavaScript**.
+You could use **TypeScript** as _RTK_ has built-in support for it.
+
+### Install required packages
+
+Add the _RTK_ package and another one called [React-Redux](https://react-redux.js.org/) to your project which would help us to use Redux with React.
+
+```
+npm install @reduxjs/toolkit react-redux
+or
+yarn add @reduxjs/toolkit react-redux
+```
+
+### Create a Redux store
+
+Import the `configureStore` API from _RTK_. We'll start by creating an empty Redux store, and exporting it.
+
+```js
+import { configureStore } from '@reduxjs/toolkit'
+
+export const store = configureStore({
+  reducer: {},
+})
+```
+
+This will automatically configure the **Redux DevTools** extension so that you can inspect the store while developing.
+
+### Provide the Redux store to React
+
+Once the store is configured, we need to pass it to React components using the React-Redux package.
+Import the Redux store we just created, put a `<Provider>` around your `<App>`, and pass the store as a prop.
+
+```jsx {3,4,9}
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { store } from './app/store'
+import { Provider } from 'react-redux'
+import App from './App'
+import './index.css'
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+### Create A Redux Slice
+
+Import the `createSlice` API from _RTK_ which uses Immer. Creating a slice needs some default data which are shown in the below example.
+The slice generates actions and reducer for you.
+
+```js
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+  value: 0,
+}
+
+export const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment: (state) => {
+      // RTK allows us to write "mutating" logic in reducers.
+      // It doesn't actually mutate the state because it uses the Immer library.
+      state.value += 1
+    },
+    decrement: (state) => {
+      state.value -= 1
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload
+    },
+  },
+})
+
+// Action creators are generated for each case reducer function
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
+
+// Reducer are generated per slice
+export default counterSlice.reducer
+```
+
+### Add Generated reducer to the store
+
+Import the reducer function from the slice and add it to your store inside reducer parameter.
+
+```js {2,6}
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../features/counter/counterSlice'
+
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+})
+```
+
+### Use Redux state and actions in React
+
+Now our React components can use `useSelector` for reading data from store and `useDispatch` to dispatch actions which are imported from React-Redux.
+
+```jsx
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './counterSlice'
+
+export function Counter() {
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
+  return (
+    <div>
+      <div>
+        <button aria-label="Increment value" onClick={() => dispatch(increment())}>
+          Increment
+        </button>
+        <span>{count}</span>
+        <button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
+          Decrement
+        </button>
+      </div>
+    </div>
+  )
+}
+```
+
+## Handling Asynchronous Logic with RTK
+
+_RTK_ provides a `createAsyncThunk()` API for you to write asynchronous code
+which uses [Redux Thunk](https://github.com/reduxjs/redux-thunk) library underneath the hood.
+You can read more about it on their [documentation](https://redux-toolkit.js.org/api/createAsyncThunk).
+
+From **v1.6** of _RTK_, you get an optional package pre-included called **RTK Query (RTKQ)** which is _a powerful data fetching and caching tool_.
+It is similar to [React Query](https://react-query.tanstack.com/) but specially built on top of Redux and for Redux.
+If you want to learn more, visit their [documentation](https://redux-toolkit.js.org/rtk-query/overview).
+
+## Conclusion
+
+If you're not using _RTK_, now is the time to give it a try.
+I'm sure you'll feel more productive after using _RTK_. Hope you liked this article and learned something.
+In the next article, I'll be covering about **RTK Query (RTKQ)**.
