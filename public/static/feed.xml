@@ -1,0 +1,104 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>Sujan Tamang</title>
+      <link>https://sujantmg.com.np/blog</link>
+      <description>A blog powered by Next.js and Tailwind.css</description>
+      <language>en-us</language>
+      <managingEditor>everestgaming3@gmail.com (Suzan)</managingEditor>
+      <webMaster>everestgaming3@gmail.com (Suzan)</webMaster>
+      <lastBuildDate>Sat, 02 Oct 2021 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://sujantmg.com.np/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://sujantmg.com.np/blog/efficient-redux-development-with-redux-toolkit</guid>
+    <title>Efficient Redux development with Redux Toolkit</title>
+    <link>https://sujantmg.com.np/blog/efficient-redux-development-with-redux-toolkit</link>
+    <description>This article covers about Redux Toolkit which is the official, opinionated, batteries-included toolset for efficient Redux development.</description>
+    <pubDate>Sat, 02 Oct 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>React</category><category>Redux Toolkit</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/a-guide-for-writing-and-using-exrpess-middlewares</guid>
+    <title>A Guide for writing and using express middlewares</title>
+    <link>https://sujantmg.com.np/blog/a-guide-for-writing-and-using-exrpess-middlewares</link>
+    <description>If you want to learn about middlewares in express, this article is for you.</description>
+    <pubDate>Sat, 25 Sep 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>Node.js</category><category>Express</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/why-do-we-need-uselayouteffect-hook</guid>
+    <title>Why do we need useLayoutEffect Hook?</title>
+    <link>https://sujantmg.com.np/blog/why-do-we-need-uselayouteffect-hook</link>
+    <description>In this short article I&#39;ll be talking about useLayoutEffect hook and also be comparing it with useEffect.</description>
+    <pubDate>Sat, 18 Sep 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>React</category><category>Hooks</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/the-power-of-custom-hooks-in-react</guid>
+    <title>The Power of Custom Hooks in React</title>
+    <link>https://sujantmg.com.np/blog/the-power-of-custom-hooks-in-react</link>
+    <description>Hooks are a new addition in React 16.8. Building your own Hooks lets you extract component logic into reusable functions.</description>
+    <pubDate>Sat, 11 Sep 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>React</category><category>Hooks</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/here-are-the-5-things-i-liked-about-vuejs</guid>
+    <title>Here are the 5 Things I Liked About Vue.js</title>
+    <link>https://sujantmg.com.np/blog/here-are-the-5-things-i-liked-about-vuejs</link>
+    <description>In this post, you’ll learn the five great things of Vue.js progressive JS framework than other JS libraries and frameworks.</description>
+    <pubDate>Sat, 04 Sep 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>Vue.js</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/learning-python-basics-as-a-javascript-developer</guid>
+    <title>Learning Python Basics as a JavaScript Developer</title>
+    <link>https://sujantmg.com.np/blog/learning-python-basics-as-a-javascript-developer</link>
+    <description>In this post, you’ll learn the basics of Python from the viewpoint of JavaScript Developer and know the differences between these Programming languages.</description>
+    <pubDate>Sat, 28 Aug 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>Python</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/the-complete-guide-to-refs-and-useRefs-in-react</guid>
+    <title>The Complete Guide to Refs and useRef() in React</title>
+    <link>https://sujantmg.com.np/blog/the-complete-guide-to-refs-and-useRefs-in-react</link>
+    <description>In this post, you’ll learn about accessing DOM elements &amp; specially useRef() hook of React to create persisted mutable values.</description>
+    <pubDate>Sat, 21 Aug 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>React</category><category>Hooks</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/an-intro-to-object-oriented-programming-in-javascript</guid>
+    <title>An introduction to Object-Oriented Programming in Javascript</title>
+    <link>https://sujantmg.com.np/blog/an-intro-to-object-oriented-programming-in-javascript</link>
+    <description>In this post, you’ll learn the basics of Object-Oriented Programming in JavaScript with the help of some images and simple codes.</description>
+    <pubDate>Sat, 14 Aug 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>Javascript</category><category>OOP</category><category>Programming Paradigm</category>
+  </item>
+
+  <item>
+    <guid>https://sujantmg.com.np/blog/react-throttle-debounce</guid>
+    <title>How to Correctly Debounce and Throttle Callbacks in React</title>
+    <link>https://sujantmg.com.np/blog/react-throttle-debounce</link>
+    <description>In this post, you’ll learn how to correctly use React hooks to apply debouncing and throttling techniques to callbacks in React.</description>
+    <pubDate>Sat, 07 Aug 2021 00:00:00 GMT</pubDate>
+    <author>everestgaming3@gmail.com (Suzan)</author>
+    <category>React</category><category>Callbacks</category>
+  </item>
+
+    </channel>
+  </rss>
