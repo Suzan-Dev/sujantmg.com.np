@@ -9,7 +9,7 @@ linkedin: https://www.linkedin.com/in/sujan-tamang-25b640198
 github: https://github.com/Suzan-Dev
 ---
 
-## About me
+## About me 👋
 
 Hi! I'm **Sujan Tamang**, a self-taught software developer with over 2+ year of experience
 currently working as a **Frontend Developer** at **Ekbana Solutions**.
@@ -22,7 +22,7 @@ Started my journey as a **Frontend React.js Developer** to **Backend Node.js Dev
 I've worked on two of the biggest **e-commerce projects** and numerous side projects of my own.
 I love being a part of open source community, solving problems & writing clean code.
 
-## What I am learning in 2022
+## What I am learning in 2022 🐱‍💻
 
 - Data Structures & Algorithms
 - Remix
