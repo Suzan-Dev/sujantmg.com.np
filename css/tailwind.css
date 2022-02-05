@@ -43,3 +43,7 @@ html.dark body {
 html.dark input {
   background-color: #1e2936;
 }
+
+html.dark details {
+  background-color: #1f2937 !important;
+}
