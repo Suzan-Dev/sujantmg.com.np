@@ -22,9 +22,7 @@ export default function Footer() {
           <Link href="/">{siteMetadata.title}</Link>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/Suzan-Dev/sujantmg.com.np">
-            Contribute to this on Github
-          </Link>
+          <Link href={siteMetadata.siteRepo}>Contribute to this on Github</Link>
         </div>
       </div>
     </footer>

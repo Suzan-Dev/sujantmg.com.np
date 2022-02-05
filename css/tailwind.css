@@ -32,6 +32,14 @@ html {
 }
 
 ::selection {
-  background-color: #37b4ca;
+  background-color: #0ea5e9;
   color: #fff;
+}
+
+html.dark body {
+  background-color: #101826;
+}
+
+html.dark input {
+  background-color: #1e2936;
 }

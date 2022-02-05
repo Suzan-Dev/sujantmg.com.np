@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'Sujan Tamang',
   author: 'Suzan',
   headerTitle: 'Sujan Tamang',
-  description: 'A blog powered by Next.js and Tailwind.css',
+  description: 'Opinions are my own.',
   language: 'en-us',
   siteUrl: 'https://sujantmg.com.np',
   siteRepo: 'https://github.com/Suzan-Dev/sujantmg.com.np',
