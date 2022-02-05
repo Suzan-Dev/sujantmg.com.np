@@ -57,7 +57,7 @@ const siteMetadata = {
       // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
       theme: 'github-light',
       // theme when dark mode
-      darkTheme: 'github-dark',
+      darkTheme: 'icy-dark',
     },
     disqus: {
       // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
