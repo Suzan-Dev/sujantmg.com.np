@@ -102,7 +102,7 @@ The following program demonstrates this approach:
 
 ```js
 const fs = require('fs')
-const readable = fs.createReadStream('./myfile', { highWaterMark: 20 })
+const readable = fs.createReadStream('./myfile.txt', { highWaterMark: 20 })
 
 readable.on('data', (chunk) => {
   console.log(`Read ${chunk.length} bytes\n"${chunk.toString()}"\n`)
@@ -142,7 +142,7 @@ We can demonstrate this using a slightly modified version of our previous exampl
 
 ```js
 const fs = require('fs')
-const readable = fs.createReadStream('./myfile', { highWaterMark: 20 })
+const readable = fs.createReadStream('./myfile.txt', { highWaterMark: 20 })
 
 let bytesRead = 0
 
