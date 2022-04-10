@@ -1,5 +1,19 @@
 const projectsData = [
   {
+    title: 'TestMink',
+    description: `Boost your testing efforts with TestMink. A single workspace for manual and automated tests.
+    Currently used as an internal tool for office employees only. Will be launched as an official product in the future.`,
+    imgSrc: '/static/images/projects/testmink.png',
+    href: 'https://app.testmink.com',
+  },
+  {
+    title: 'Kee',
+    description: `An UK-based client project where content management is directly built into the website. 
+    For content management, we used TinaCMS an open source editor that brings visual editing into React websites.`,
+    imgSrc: '/static/images/projects/kee.png',
+    href: 'https://uat-kee-new-frontend.ekbana.net/',
+  },
+  {
     title: 'PokoCart',
     description: `Another big project where I worked as a MERN Stack Developer to built an e-commerce app,
     a bit similar in functionality to daraz. By working on this project, I learned and knew the architecture of bigger apps.`,
