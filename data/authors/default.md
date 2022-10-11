@@ -11,8 +11,7 @@ github: https://github.com/Suzan-Dev
 
 ## About me 👋
 
-Hi! I'm **Sujan Tamang**, a self-taught software developer with over 3+ year of experience
-currently working as a **Frontend Developer** at **Ekbana Solutions**.
+Hi! I'm **Sujan Tamang**, a self-taught software developer with over 3+ year of experience.
 I have a flair for creating elegant solutions and building better applications for the world.
 
 Passionate about **Web development** & **Open source**.
@@ -26,7 +25,7 @@ I love being a part of the whole community, solving problems & writing clean cod
 ## What I am learning in 2022 🐱‍💻
 
 - Remix
-- Vite & Vitest
+- Qwik
 - Astro
 
 I hope you'll enjoy reading the blog. Have a great day!
