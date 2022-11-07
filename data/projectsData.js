@@ -1,5 +1,11 @@
 const projectsData = [
   {
+    title: 'ORGO',
+    description: `ORGO is on a mission to regenerate the planet by gamifying land stewardship and enabling decentralized governance of community assets.`,
+    imgSrc: '/static/images/projects/orgo.png',
+    href: 'https://www.orgo.earth/',
+  },
+  {
     title: 'TestMink',
     description: `Boost your testing efforts with TestMink. A single workspace for manual and automated tests.
     Currently used as an internal tool for office employees only. Will be launched as an official product in the future.`,
