@@ -2,7 +2,7 @@
 name: Sujan Tamang
 avatar: /static/images/avatar.jpg
 occupation: Software Developer
-company: EKbana Solutions
+company: Botsplash
 email: everestgaming3@gmail.com
 twitter: https://twitter.com/SujanTa88350485
 linkedin: https://www.linkedin.com/in/sujan-tamang-25b640198
