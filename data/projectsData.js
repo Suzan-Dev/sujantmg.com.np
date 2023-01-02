@@ -1,9 +1,16 @@
 const projectsData = [
   {
+    title: 'Botsplash',
+    description: `Botsplash is a modern omnichannel consumer engagement platform which helps you to engage with your customers
+    where they are and helps to achieve higher sales by making you efficient.`,
+    imgSrc: '/static/images/projects/botsplash.png',
+    href: 'https://www.botsplash.com',
+  },
+  {
     title: 'ORGO',
     description: `ORGO is on a mission to regenerate the planet by gamifying land stewardship and enabling decentralized governance of community assets.`,
     imgSrc: '/static/images/projects/orgo.png',
-    href: 'https://www.orgo.earth/',
+    href: 'https://www.orgo.earth',
   },
   {
     title: 'TestMink',
@@ -17,14 +24,14 @@ const projectsData = [
     description: `An UK-based client project where content management is directly built into the website. 
     For content management, we used TinaCMS an open source editor that brings visual editing into React websites.`,
     imgSrc: '/static/images/projects/kee.png',
-    href: 'https://uat-kee-new-frontend.ekbana.net/',
+    href: 'https://uat-kee-new-frontend.ekbana.net',
   },
   {
     title: 'PokoCart',
     description: `Another big project where I worked as a MERN Stack Developer to built an e-commerce app,
     a bit similar in functionality to daraz. By working on this project, I learned and knew the architecture of bigger apps.`,
     imgSrc: '/static/images/projects/pokocart.png',
-    href: 'http://pokocart.com/',
+    href: 'http://pokocart.com',
     // href: '/blog/the-time-machine',
   },
   {
@@ -33,14 +40,14 @@ const projectsData = [
     a bit similar in functionality to Instacart. Later while working on this project, I also learned
     about nodejs & mongodb database.`,
     imgSrc: '/static/images/projects/ezbazaar.png',
-    href: 'http://ezbazaaronline.com/',
+    href: 'http://ezbazaaronline.com',
   },
   {
     title: 'Crwn Clothing',
     description: `My biggest personal e-commerce project which I built for learning react.
     All the data are fetched from Firebase's Firestore database. I used stripe for handling the payments.`,
     imgSrc: '/static/images/projects/crwn-clothing.png',
-    href: 'https://crwn-clothing-nep.herokuapp.com/',
+    href: 'https://crwn-clothing-nep.herokuapp.com',
   },
   {
     title: 'Meal Finder',
@@ -48,7 +55,7 @@ const projectsData = [
     HTML and CSS. We can search for a meal or get random one and view it's recipe.
     It gets all of the data from a free hosted meals API.`,
     imgSrc: '/static/images/projects/meal-finder.png',
-    href: 'https://mealsfinder.netlify.app/',
+    href: 'https://mealsfinder.netlify.app',
   },
 ]
 
