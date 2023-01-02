@@ -17,15 +17,20 @@ I have a flair for creating elegant solutions and building better applications f
 Passionate about **Web development** & **Open source**.
 **Javascript** being my core technical skill, there's no limit for my interest of learning new technologies.
 
-Started my journey as a **Frontend React.js Developer** to **Backend Node.js Developer**, now I am **Full-stack Software Developer**.
+Started my journey as a **Frontend React.js Developer** to **Backend Node.js Developer**, currently I'm
+working as a **Full Stack Javascript Developer** at [Botsplash](https://www.botsplash.com).
 I've worked on two biggest **E-commerce projects**, [**Test Case Management Software**](https://app.testmink.com)
 and numerous [**side projects**](https://github.com/Suzan-Dev?tab=repositories) of my own.
-I love being a part of the whole community, solving problems & writing clean code.
+I love being a part of the tech communities, learn new technologies, solve problems & write clean code.
 
-## What I am learning in 2022 🐱‍💻
+## What I am learning in 2023 🐱‍💻
 
-- Remix
-- Qwik
-- Astro
+- Redis
+- Websockets
+- tRPC
+- Animations
+- Turborepo
+- AWS
+- Microservices
 
 I hope you'll enjoy reading the blog. Have a great day!
