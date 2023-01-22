@@ -1,0 +1,181 @@
+---
+title: Why Listing Dependencies in package.json is a Good Practice
+date: '2023-01-22'
+tags: ['Node.js', 'Package Manager']
+draft: false
+summary: Managing large amount of dependencies in a big Node.js project can get tricky sometimes. Let me share you something that I faced some time ago.
+images: ['/static/images/blogs/14/banner.jpg']
+layout: PostLayout
+authors: ['default']
+---
+
+![Why Listing Dependencies in package.json is a Good Practice](/static/images/blogs/14/banner.jpg)
+
+It's my first tech article of 2023 and I hope everyone is having a great year. This article is all about _managing dependencies_ in Nodejs.
+I know sometimes it can feel like _spider's web_ (like the picture above) and only small amount of time is spent managing it but
+still understanding it is very crutial. Today, I want to share something that I just recently faced at my work.
+
+## A Short Story
+
+One day, I was upgrading a npm library to it's latest version. I looked at it's migration guide and found no breaking changes for our project.
+It was a necessary upgrade so, I just ran some commands, upgraded it and pushed the code. Later, the **system crashed** due to the code I pushed.
+I was amazed by the error message because it was of another library that I didn't even touch. so, I was asking myself why the hell did that happen.
+
+If something like this has already happened to you before and you've solved it, still you can read this article to the end because
+I'm going to cover some extra things. Let's get started.
+
+## Prerequisites
+
+This is not a step-by-step tutorial and I'm assuming that you are already familiar with Node.js & Package management.
+I'm going to write some simple commands & little amount of code. If you want, you can follow along me.
+But if you just want to get the idea, please skip the next section.
+
+## Recreating the error
+
+I'm going to install some npm libraries. You don't have to know about them. It's just for **demonstration purpose**.
+If you're going to follow along, you'll need to have [Node.js](https://nodejs.org/en/) installed.
+I'm going to use [npm](https://www.npmjs.com/) but you can use [yarn](https://yarnpkg.com/) instead if you like.
+
+Create a new folder and inside it run the following command:
+
+```
+$ npm init -y
+```
+
+This will create a new file named `package.json`.
+Now install a library called [firebase-admin](https://www.npmjs.com/package/firebase-admin) with version 8.0.0.
+
+```
+$ npm i firebase-admin@8.0.0
+```
+
+We're installing v8.0.0 so, that later we can simulate the error that I got while upgrading the package.
+Inside the folder create a new file named `index.js`.
+
+```
+$ touch index.js
+```
+
+Inside the file, add the following lines of code.
+
+```js:index.js
+const uuid = require('uuid/v4')
+
+console.log('Result: ' + uuid())
+```
+
+We haven't installed any library named [uuid](https://www.npmjs.com/package/uuid) but how are we able to use it?
+It's possible because `firebase-admin` is using `uuid` as a dependency so, it got installed alongside and
+we're able to use `firebase-admin` library's dependencies directly in our code without having it in our `package.json`.
+
+> This is not a good practice and can produce unexpected error later on which I'm going to show.
+
+Let's get the `uuid` library's version that got installed by going into the `node_modules` folder. Inside it, look for a folder named `uuid`
+and inside that folder is another `package.json` file which is of `uuid` library. Remember the version for now which is **"3.4.0"**.
+
+Now let's run the file using the following command:
+
+```
+$ node index
+```
+
+It shoud log something like below to the console.
+
+```
+Result: 608bf07c-8af6-42a5-b8b5-50f0005f2de5
+```
+
+Okay, till now everything is fine. Now we're going to upgrade the `firebase-admin` to latest and face the same error I faced at my work.
+
+```
+$ npm i firebase-admin@11.5.0
+```
+
+> instead of @11.5.0, you can use @latest but for now I recommend you to use @11.5.0 to follow along the article.
+
+Now, try to run the file again and this time you will get an error something like this.
+
+```
+$ node index
+node:internal/modules/cjs/loader:535
+      throw e;
+      ^
+
+Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './v4' is not defined by "exports" in ...
+```
+
+The error is not coming from `firebase-admin` library that we upgraded. It's actually coming from `uuid` library.
+I will explain later on but for now, let's fix this error by updating the code.
+
+```js:index.js
+const { v4: uuidv4 } = require('uuid')
+
+console.log('Result: ' + uuidv4())
+```
+
+If you now run the file, it will work like before. What just happened?
+I was also shocked for the first time I faced this. Let's get to the answer.
+
+## Analyzing the whole process
+
+So, error appeared for `uuid` library after upgrading `firebase-admin` to latest.
+It's becuase the latest version of this library is using different version of `uuid` library.
+When we upgraded `firebase-admin` library, it's dependencies also got upgraded.
+
+Let's verify this by again looking into `uuid` folder inside `node_modules`.
+If you now see the version inside `package.json` file, it should be "9.0.0" but before it was "3.4.0".
+
+In v9.0.0 of `uuid` library, the previous syntax won't work so, we updated the code to fix the error.
+We'll never want something like this to happen in the future again while upgrading libraries. so, let's get to the solution.
+
+## Solution
+
+As might you've guessed, we shouldn't use `firebase-admin` library's `uuid` dependency.
+If you've installed the `uuid` library in your project this error might not have occured.
+so, it's a good practice to install the library that you're using directly in your project.
+(i.e. make sure it is listed in your project's `package.json` file)
+
+If you follow the same process by installing `uuid` library before upgrading `firebase-admin`,
+it would work without any errors and you can upgrade `uuid` library whenever you want.
+
+Sometimes, we might **forgot** to install them because when we use libraries like that, no error is thrown.
+For time like this, you can use a tool that'll check your `package.json` file with the
+libraries that you're using in your project and let you know of missing dependencies.
+
+There are a lot of libraries for this. One of them is [depcheck](https://www.npmjs.com/package/depcheck).
+It not only shows the missing dependencies from `package.json` but also how each dependencies are being used and
+which dependencies are useless (i.e. not used).
+
+If you install and run `depcheck` then it'll output something like
+
+```
+Unused dependencies
+* firebase-admin
+Missing dependencies
+* uuid: .\index.js
+```
+
+That's it. Now you know your unused and missing dependencies and act on them accordingly.
+
+## Pnpm - An alternative solution
+
+[Pnpm](https://pnpm.io/) a is fast, disk space efficient package manager. How can this new thing become a solution?
+A little time back, I said _"Sometimes, we might forgot to install them because when we use libraries like that, no error is thrown."_
+But let me tell you this, If you use `pnpm` as your package manager instead of `npm` or `yarn`, it'll throw an error. But how and why?
+
+In short, it has **non-flat node_modules directory** which is very different than others.
+When installing dependencies with `npm` or `yarn`, all packages are hoisted to the root of the modules directory.
+(i.e. they'll have **flat node_modules directory**). As a result, source code has access to dependencies that are not added as dependencies to the project.
+By default, pnpm uses **symlinks** to add only the direct dependencies of the project into the root of the modules directory.
+
+You can also have **flat node_modules directory** when using pnpm if you want and
+make it behave like `npm` or `yarn` with some changes to **hoisting** settings.
+You can find it [here](https://pnpm.io/npmrc#dependency-hoisting-settings).
+
+You can easily [transition](https://pnpm.io/cli/import) to pnpm from `npm` or `yarn`. I totally love using it in my projects.
+The DX that it provides is great. I'll be writing an article on `pnpm` in the future and cover it in more detail.
+
+## Closing thoughts
+
+I hope this article helped you to know why listing dependencies in package.json file is essential for _efficient_ and _secure_ code management.
+This was a new lesson for me too. I hope to share more things like this if I faced them. This much for today and have a nice day.
