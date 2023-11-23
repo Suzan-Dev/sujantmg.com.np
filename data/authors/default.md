@@ -27,8 +27,8 @@ I love being a part of the tech communities, learn new technologies, solve probl
 
 - Redis
 - Websockets
-- tRPC
-- Animations
+- Elasticsearch
+- Neo4j
 - Turborepo
 - AWS
 - Microservices
