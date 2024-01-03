@@ -5,7 +5,7 @@
   "scripts": {
     "start": "next-remote-watch ./data",
     "dev": "next dev",
-    "build": "next build && node ./scripts/generate-sitemap",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && next build && node ./scripts/generate-sitemap",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.0",
-    "@vercel/analytics": "^0.1.6",
+    "@vercel/analytics": "^1.1.1",
     "autoprefixer": "^10.2.5",
     "esbuild": "^0.12.15",
     "gray-matter": "^4.0.2",

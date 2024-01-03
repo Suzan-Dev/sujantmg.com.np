@@ -27,7 +27,11 @@ export default function Home({ posts }) {
           >
             Latest
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+          <p
+            className="text-lg leading-7 text-gray-500 dark:text-gray-400"
+            onClick={() => track('Opinions')}
+          >
             {siteMetadata.description}
           </p>
         </div>
