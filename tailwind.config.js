@@ -2,8 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
+  content: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -21,7 +20,7 @@ module.exports = {
       },
       colors: {
         primary: colors.sky,
-        gray: colors.trueGray,
+        gray: colors.neutral,
         code: {
           green: '#b5f4a5',
           yellow: '#ffe484',
@@ -83,11 +82,11 @@ module.exports = {
               borderRadius: '0.25rem',
             },
             hr: { borderColor: theme('colors.gray.200') },
-            'ol li:before': {
+            'ol li::marker': {
               fontWeight: '600',
               color: theme('colors.gray.500'),
             },
-            'ul li:before': {
+            'ul li::marker': {
               backgroundColor: theme('colors.gray.500'),
             },
             strong: { color: theme('colors.gray.600') },
@@ -131,11 +130,11 @@ module.exports = {
               backgroundColor: theme('colors.gray.800'),
             },
             hr: { borderColor: theme('colors.gray.700') },
-            'ol li:before': {
+            'ol li::marker': {
               fontWeight: '600',
               color: theme('colors.gray.400'),
             },
-            'ul li:before': {
+            'ul li::marker': {
               backgroundColor: theme('colors.gray.400'),
             },
             strong: { color: theme('colors.gray.100') },
@@ -155,9 +154,6 @@ module.exports = {
         },
       }),
     },
-  },
-  variants: {
-    typography: ['dark'],
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
