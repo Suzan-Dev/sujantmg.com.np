@@ -2,7 +2,7 @@ const projectsData = [
   {
     title: 'Lawpath',
     description: `Lawpath is an online legal service that makes it faster and easier for businesses to access legal solutions solely based on their own preferences.`,
-    imgSrc: '/static/images/projects/lawpath.svg',
+    imgSrc: '/static/images/projects/lawpath.png',
     href: 'https://www.lawpath.com.au',
   },
   {
